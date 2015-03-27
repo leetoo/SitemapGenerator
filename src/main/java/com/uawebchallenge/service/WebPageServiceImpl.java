@@ -65,7 +65,6 @@ public class WebPageServiceImpl implements WebPageService {
 
                     store.put(webPage.getLoc(), webPage);
                 }
-
             }
         }
     }
