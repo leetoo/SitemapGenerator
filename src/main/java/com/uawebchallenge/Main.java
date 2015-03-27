@@ -6,11 +6,10 @@ public class Main {
     public static void main(String[] args) {
         WebPageServiceImpl webPageService = new WebPageServiceImpl();
 
-
         String s0 = "((http:|https:)+/{2}([a-zA-Z0-9]*).([a-zA-Z0-9]*).([a-zA-Z0-9]*).([a-zA-Z0-9]*).([a-zA-Z0-9]*)[/{1}].*)";
-        String s1 = "((http:|https:)+/{2}([a-zA-Z0-9]*).([a-zA-Z0-9]*).([a-zA-Z0-9]*).([a-zA-Z0-9]*).([a-zA-Z0-9]*)[/{1}]([a-zA-Z0-9]+).*)";
-        String s2 = "((http:|https:)+/{2}([a-zA-Z0-9]+).([a-zA-Z0-9]+).([a-zA-Z0-9]+).([a-zA-Z0-9]+).([a-zA-Z0-9]+)[/{1}]([a-zA-Z0-9]+).*[/{1}]([a-zA-Z0-9]+).*)";
-        String s3 = "(^(http:|https:)+/{2}([a-zA-Z0-9]+).([a-zA-Z0-9]+).([a-zA-Z0-9]+).([a-zA-Z0-9]+).([a-zA-Z0-9]+)[/{1}]([a-zA-Z0-9]+).*[/{1}]([a-zA-Z0-9]+).*[/{1}]([a-zA-Z0-9]+).*)";
+        String s1 = "((http:|https:)+/{2}([a-zA-Z0-9]*).([a-zA-Z0-9]*).([a-zA-Z0-9]*).([a-zA-Z0-9]*).([a-zA-Z0-9]*)[/{1}](.*[a-zA-Z0-9]+))";
+        String s2 = "((http:|https:)+/{2}([a-zA-Z0-9]+).([a-zA-Z0-9]+).([a-zA-Z0-9]+).([a-zA-Z0-9]+).([a-zA-Z0-9]+)[/{1}]([a-zA-Z0-9]+).*[/{1}](.*[a-zA-Z0-9]+))";
+        String s3 = "((http:|https:)+/{2}([a-zA-Z0-9]+).([a-zA-Z0-9]+).([a-zA-Z0-9]+).([a-zA-Z0-9]+).([a-zA-Z0-9]+)[/{1}]([a-zA-Z0-9]+).*[/{1}]([a-zA-Z0-9]+).*[/{1}](.*[a-zA-Z0-9]+))";
 
         if("http://i.ua/".matches(s0)){
             System.out.println(true);
@@ -20,11 +19,12 @@ public class Main {
             System.out.println(true);
         }else{
             System.out.println(false);
-        }if("http://ddss.scs-dc.ua.au/sd?ss_dsd/ss_ds_?d/asd".matches(s3)){
+        }if("http://ddss.scs-dc.ua.au/sd?ss_dsd/ss_ds_?d/end".matches(s3)){
             System.out.println(true);
         }else{
             System.out.println(false);
         }
+
 
     }
 }

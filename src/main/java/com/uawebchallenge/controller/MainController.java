@@ -14,25 +14,31 @@ public class MainController {
     private WebPageService webPageService = new WebPageServiceImpl();
 
     @RequestMapping(value = "/form.html", method = RequestMethod.GET)
-    public ModelAndView getForm(){
+    public ModelAndView getForm() {
         ModelAndView modelAndView = new ModelAndView("Form");
         return modelAndView;
     }
 
     @RequestMapping(value = "/form.html", method = RequestMethod.POST)
-    public ModelAndView successForm(@RequestParam("url") String url){
+    public ModelAndView successForm(@RequestParam("url") String url) {
         ModelAndView result = null;
-        if(webPageService.validateURL(url)){
+        if (webPageService.validateURL(url)) {
             ModelAndView modelAndView = new ModelAndView("SuccessForm");
             webPageService.createWebPages(url);
             String s = webPageService.createSiteMap(url);
             modelAndView.addObject("msg", s);
             result = modelAndView;
-        }else{
+        } else {
             ModelAndView modelAndView = new ModelAndView("Form");
             modelAndView.addObject("msg", "Invalid URL, try again!");
             result = modelAndView;
         }
         return result;
+    }
+
+    @RequestMapping(value = "/download.html", method = RequestMethod.GET)
+    public ModelAndView download(){
+        ModelAndView modelAndView = new ModelAndView("Link");
+        return modelAndView;
     }
 }
