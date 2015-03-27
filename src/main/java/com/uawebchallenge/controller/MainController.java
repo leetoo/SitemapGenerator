@@ -10,7 +10,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class MainController {
-
     private WebPageService webPageService = new WebPageServiceImpl();
 
     @RequestMapping(value = "/form.html", method = RequestMethod.GET)
@@ -25,8 +24,7 @@ public class MainController {
         if (webPageService.validateURL(url)) {
             ModelAndView modelAndView = new ModelAndView("SuccessForm");
             webPageService.createWebPages(url);
-            String s = webPageService.createSiteMap(url);
-            modelAndView.addObject("msg", s);
+            webPageService.createSiteMap(url);
             result = modelAndView;
         } else {
             ModelAndView modelAndView = new ModelAndView("Form");

@@ -71,7 +71,7 @@ public class WebPageServiceImpl implements WebPageService {
     }
 
     @Override
-    public String createSiteMap(String url) {
+    public void createSiteMap(String url) {
 
         try {
             WebSitemapGenerator wsg = new WebSitemapGenerator(url, new File("D:"));
@@ -89,6 +89,5 @@ public class WebPageServiceImpl implements WebPageService {
             e.printStackTrace();
         }
         store.clear();
-        return "D://sitemap.xml";
     }
 }

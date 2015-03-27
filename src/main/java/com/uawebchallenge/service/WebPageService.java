@@ -6,5 +6,5 @@ public interface WebPageService {
 
     void createWebPages(String url);
 
-    String createSiteMap(String url);
+    void createSiteMap(String url);
 }
