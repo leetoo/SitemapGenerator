@@ -32,7 +32,6 @@ public class WebPageServiceImpl implements WebPageService {
         }catch (MalformedURLException e){
             e.printStackTrace();
         }
-
         return result;
     }
 
@@ -62,7 +61,6 @@ public class WebPageServiceImpl implements WebPageService {
                             .changeFreq(ChangeFreq.WEEKLY)
                             .priority(0.75)
                             .builder();
-
                     store.put(webPage.getLoc(), webPage);
                 }
             }
@@ -71,7 +69,6 @@ public class WebPageServiceImpl implements WebPageService {
 
     @Override
     public void createSiteMap(String url) {
-
         try {
             WebSitemapGenerator wsg = new WebSitemapGenerator(url, new File("D:"));
             for(Map.Entry<String, WebPage> entry : store.entrySet()){
