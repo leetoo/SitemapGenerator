@@ -19,7 +19,7 @@ import java.util.Map;
 
 public class WebPageServiceImpl implements WebPageService {
 
-    private HashMap<String, WebPage> store = new HashMap<String, WebPage>();
+    private HashMap<String, WebPage> store = new HashMap<String, WebPage>();//Stores the created WebPage
 
     @Override
     public Boolean validateURL(String url){
@@ -37,7 +37,7 @@ public class WebPageServiceImpl implements WebPageService {
 
     @Override
     public void createWebPages(String url) {
-        String regex0 = "((http:|https:)+/{2}([a-zA-Z0-9]*).([a-zA-Z0-9]*).([a-zA-Z0-9]*).([a-zA-Z0-9]*).(.*[a-zA-Z0-9]*))";
+        String regex0 = "((http:|https:)+/{2}([a-zA-Z0-9]*).([a-zA-Z0-9]*).([a-zA-Z0-9]*).([a-zA-Z0-9]*).([a-zA-Z0-9]*))";
         String regex1 = "((http:|https:)+/{2}([a-zA-Z0-9]*).([a-zA-Z0-9]*).([a-zA-Z0-9]*).([a-zA-Z0-9]*).([a-zA-Z0-9]*)[/{1}](.*[a-zA-Z0-9]*))";
         String regex2 = "((http:|https:)+/{2}([a-zA-Z0-9]*).([a-zA-Z0-9]*).([a-zA-Z0-9]*).([a-zA-Z0-9]*).([a-zA-Z0-9]*)[/{1}]([a-zA-Z0-9]*).*[/{1}](.*[a-zA-Z0-9]*))";
         String regex3 = "((http:|https:)+/{2}([a-zA-Z0-9]*).([a-zA-Z0-9]*).([a-zA-Z0-9]*).([a-zA-Z0-9]*).([a-zA-Z0-9]*)[/{1}]([a-zA-Z0-9]*).*[/{1}]([a-zA-Z0-9]*).*[/{1}](.*[a-zA-Z0-9]*))";
@@ -49,12 +49,12 @@ public class WebPageServiceImpl implements WebPageService {
             e.printStackTrace();
         }
 
-        Elements links = doc.select("a[href]");
+        Elements links = doc.select("a[href]");//Getting all the links from the site
 
         for (Element link : links) {
             String tmp = link.attr("abs:href");
             if (tmp.contains(url)) {
-                if(tmp.matches(regex0) || tmp.matches(regex1) || tmp.matches(regex2) || tmp.matches(regex3)){
+                if(tmp.matches(regex0) || tmp.matches(regex1) || tmp.matches(regex2) || tmp.matches(regex3)){ //Check the level of nesting
                     WebPage webPage = new WebPage.Builder()
                             .loc(tmp)
                             .lastMod(new Date())
